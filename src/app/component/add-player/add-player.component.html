@@ -1,0 +1,45 @@
+
+
+<app-banner [title]="title"></app-banner>
+
+  <div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10">
+          <form #addPlayerForm="ngForm" (ngSubmit)="addEditPlayer()">
+            <div class="form-group">
+              <input type="text" class="form-control" name="a" [(ngModel)]="player.name" placeholder="name">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="b" [(ngModel)]="player.post" placeholder="Post">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="c" [(ngModel)]="player.number" placeholder="Number">
+            </div>
+            <div class="form-group">
+              <select name="d" class="form-control" [(ngModel)]="player.teamId">
+                <option style="color: black" *ngFor="let t of teams" [value]="t._id">
+                  {{ t.teamName }}
+                </option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="button" (click)="filePicker.click()" class="btn btn-success">
+                Sélectionner image
+              </button>
+              <div class="form-group">
+                <input style="visibility: hidden" type="file" class="form-control" #filePicker
+                  (change)="onImageSelected($event)" />
+              </div>
+              <img [src]="imagePreview" alt="img" width="150px" />
+            </div>
+            <!--<span class="text-success">{{msg}}</span>-->
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary py-3 px-5" value="{{title}}">
+            </div>
+          </form>  
+        </div>
+
+      </div>
+    </div>
+  </div>
